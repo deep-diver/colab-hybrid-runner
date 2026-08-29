@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "colab-hybrid-runner"
+version = "0.1.0"
+description = "Orchestrate hybrid Python/PyTorch workflows across Local CPU and Google Colab GPU/TPU with zero boilerplate."
+readme = "README.md"
+authors = [
+  { name = "Chansung Park", email = "deep-diver@users.noreply.github.com" }
+]
+license = { text = "Apache-2.0" }
+keywords = ["google-colab", "colab-cli", "pytorch", "hybrid-compute", "gpu-orchestration"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Developers",
+  "Intended Audience :: Science/Research",
+  "License :: OSI Approved :: Apache Software License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence"
+]
+requires-python = ">=3.10"
+dependencies = [
+  "google-colab-cli>=0.5.11",
+  "torch>=2.0.0",
+  "pandas>=1.5.0",
+  "pyarrow>=10.0.0"
+]
+
+[project.urls]
+Homepage = "https://github.com/deep-diver/colab-hybrid-runner"
+Repository = "https://github.com/deep-diver/colab-hybrid-runner.git"

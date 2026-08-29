@@ -1,0 +1,40 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+env/
+venv/
+
+# Secret & credentials (CRITICAL)
+colab-cr-key.json
+*.pem
+*.key
+*.token
+*.env
+
+# Handover archives & caches
+*.tar.gz
+*.pt
+*.bin
+*.safetensors
+_tmp*/
+_mnist_cache/
+*.log
+
+# Old / scratch scripts
+deploy_*.py
+find_key.py
+pwd.py
+verify_cloud_run.py
+gcloud_check.*
+gcp_test.*
+test.ipynb
+test_output.ipynb
+Dockerfile
+
+# OS files
+.DS_Store
+Thumbs.db
