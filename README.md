@@ -8,6 +8,10 @@
 
 Preprocess data locally for free, execute heavy matrix compute on cloud accelerators in short bursts, cache results with SHA256 fingerprints, and export clean, standalone Jupyter Notebooks (`.ipynb`) with a single click.
 
+<p align="center">
+  <img src="assets/colab_hybrid_infographic.png" alt="Colab Hybrid Runner Infographic" width="100%">
+</p>
+
 ---
 
 ## 💡 Why Colab Hybrid Runner?
