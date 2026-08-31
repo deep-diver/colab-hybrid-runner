@@ -105,9 +105,9 @@ def step2_remote_colab_batch_embedding(session_name="sweet_spot_rag_session"):
     print("  [1/4] Provisioning Colab T4 GPU Session...")
     os.system(f"colab new -s {session_name} --gpu T4 > /dev/null 2>&1")
 
-    # 2. Upload Bundle & Helper
+    # 2. Upload Bundle & Helper (self-contained from src/)
     print("  [2/4] Uploading Compact Bundle (Network Handover 1 of 2)...")
-    os.system(f"colab upload -s {session_name} handover.py /content/handover.py > /dev/null 2>&1")
+    os.system(f"colab upload -s {session_name} src/colab_hybrid/handover.py /content/handover.py > /dev/null 2>&1")
     os.system(f"colab upload -s {session_name} rag_input_bundle.tar.gz /content/rag_input_bundle.tar.gz > /dev/null 2>&1")
 
     # 3. Create remote execution script
