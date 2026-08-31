@@ -42,9 +42,11 @@ Running entire end-to-end notebooks on cloud GPUs is often wasteful:
 ## ⚡ Quickstart
 
 ### 1. Installation
-Install the official Google Colab CLI:
+Install the official Google Colab CLI and the library:
 ```bash
 pip install google-colab-cli
+pip install -e .
+
 # Authenticate with Google Cloud / Colab API
 gcloud auth application-default login \
   --scopes=openid,https://www.googleapis.com/auth/cloud-platform,https://www.googleapis.com/auth/userinfo.email,https://www.googleapis.com/auth/colaboratory
@@ -55,7 +57,7 @@ Add `@hybrid_cell` on top of your functions. That's it!
 
 ```python
 import torch
-from hybrid_runner import hybrid_cell, export_to_notebook
+from colab_hybrid import hybrid_cell, export_to_notebook
 
 # Step 1: Preprocess on Local CPU (Free, no GPU idle costs)
 @hybrid_cell(target="local")
@@ -130,19 +132,30 @@ In a real end-to-end instruction-tuning test:
 
 ```text
 colab-hybrid-runner/
-├── handover.py                 # HandoverManager: PyTorch/Parquet/.tar.gz pack & unpack
-├── hybrid_runner.py            # @hybrid_cell decorator & export_to_notebook()
-├── mnist_model.py              # CNN model architecture definition
-├── lora_gemma_model.py         # Gemma Transformer with LoRA adapters
-├── demo_transparent_app.py     # Minimal transparent demo
-├── run_mnist_pipeline.py       # End-to-end MNIST hybrid pipeline
-├── run_hybrid_lora_pipeline.py # End-to-end LoRA fine-tuning pipeline
-├── visualize_inference.py      # Inference visualization plotter
-├── benchmarks/
+├── src/
+│   └── colab_hybrid/           # Core library
+│       ├── __init__.py         # Public exports (hybrid_cell, export_to_notebook)
+│       ├── runner.py           # Transparent decorator & .ipynb generator
+│       └── handover.py         # HandoverManager: PyTorch/Parquet/.tar.gz packing
+├── examples/                   # Practical pipelines and starter scripts
+│   ├── 01_quickstart.py        # Minimal hybrid pipeline example
+│   ├── 02_mnist_pipeline.py    # End-to-end MNIST hybrid pipeline
+│   ├── 03_lora_gemma_tuning.py # End-to-end Gemma LoRA fine-tuning
+│   ├── clean_demo_pipeline.ipynb
+│   ├── mnist_model.py
+│   ├── lora_gemma_model.py
+│   └── cells/                  # Modular step scripts
+├── benchmarks/                 # Empirical GPU vs Hybrid benchmarks
 │   ├── benchmark_gpu_vs_hybrid.py
 │   ├── benchmark_gemma.py
-│   └── benchmark_batch_scaling.py
-└── cells/                      # Modular cell scripts
+│   ├── benchmark_batch_scaling.py
+│   └── e2e_real_lm_generation.py
+├── assets/                     # Architecture infographics and visuals
+│   ├── colab_hybrid_infographic.png
+│   └── mnist_inference_results.png
+├── pyproject.toml              # Packaging and dependency specifications
+├── LICENSE                     # Apache 2.0
+└── README.md
 ```
 
 ---

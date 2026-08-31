@@ -34,3 +34,6 @@ dependencies = [
 [project.urls]
 Homepage = "https://github.com/deep-diver/colab-hybrid-runner"
 Repository = "https://github.com/deep-diver/colab-hybrid-runner.git"
+
+[tool.setuptools.packages.find]
+where = ["src"]
